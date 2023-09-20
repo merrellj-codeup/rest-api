@@ -1,5 +1,14 @@
 import { getBooks, getBook, deleteBook, postBook, patchBook, searchBookByTitle } from "./api/books.js";
 
+const renderCategories = (categories) => {
+	return categories
+		.map(
+			(category) => `
+        <span class="book-card-tag">${category}</span>
+    `
+		)
+		.join("");
+};
 const renderBook = (book, target) => {
 	const bookCard = document.createElement("article");
 	bookCard.classList.add("book-card");
@@ -13,15 +22,13 @@ const renderBook = (book, target) => {
         </div>
         <meter class="book-card-meter" min="0" max="10" value="${book.rating}"></meter>
         <div class="d-flex align-items-center justify-content-start gap-10 flex-wrap">
-            ${book.categories
-				.map(
-					(category) => `
-                    <span class="book-card-tag">${category}</span>
-                `
-				)
-				.join("")}
+            ${renderCategories(book.categories)}
         </div>
     `;
+	const editBtn = bookCard.querySelector("button");
+	editBtn.addEventListener("click", async () => {
+		/// DO THE THANG!
+	});
 	target.appendChild(bookCard);
 };
 
