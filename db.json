@@ -4,22 +4,46 @@
 			"id": 1,
 			"title": "The Great Gatsby",
 			"author": "F. Scott Fitzgerald",
+			"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sed quam ut nulla rhoncus consectetur non ut ante. Morbi quam diam, fringilla vitae maximus eu.",
+			"rating": 4,
 			"year": 1925,
 			"categories": ["Novel", "Fiction"]
 		},
 		{
 			"id": 2,
 			"title": "The Da Vinci Code",
+			"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sed quam ut nulla rhoncus consectetur non ut ante. Morbi quam diam, fringilla vitae maximus eu.",
 			"author": "Dan Brown",
+			"rating": 4,
 			"year": 2003,
 			"categories": ["Novel", "Mystery"]
 		},
 		{
 			"id": 3,
-			"name": "The Alchemist",
+			"title": "The Alchemist",
+			"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sed quam ut nulla rhoncus consectetur non ut ante. Morbi quam diam, fringilla vitae maximus eu.",
 			"author": "Paulo Coelho",
+			"rating": 4,
 			"year": 1988,
-			"categories": ["Novel", "Fantasy"]
+			"categories": ["Novel", "Fantasy", "Self Help", "Adventure"]
+		},
+		{
+			"author": "S.E. Hinton",
+			"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sed quam ut nulla rhoncus consectetur non ut ante. Morbi quam diam, fringilla vitae maximus eu.",
+			"categories": ["Novel", "Young adult fiction"],
+			"title": "Outsiders",
+			"rating": 4,
+			"year": "1967",
+			"id": 4
+		},
+		{
+			"title": "The Lord of the Rings",
+			"author": "J.R.R. Tolkien",
+			"rating": 4,
+			"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sed quam ut nulla rhoncus consectetur non ut ante. Morbi quam diam, fringilla vitae maximus eu.",
+			"year": 1954,
+			"categories": ["Fantasy", "Adventure"],
+			"id": 5
 		}
 	]
 }

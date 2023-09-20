@@ -5,6 +5,7 @@
 :root {
 	--primary-color: #769e48;
 	--grey: #e8e9eb;
+	--dark-grey: #595f69;
 	--bg-color: #f8f8f8;
 }
 body {
@@ -85,4 +86,45 @@ ul.cat-tab-menu li span {
 	border-radius: 20px;
 	background-color: #fff;
 	width: calc(33.333% - 20px);
+	padding: 25px;
+	display: flex;
+	flex-direction: column;
+}
+
+.book-card-title {
+	font-size: 18px;
+	font-weight: 500;
+}
+.book-card-year {
+	font-size: 14px;
+	font-weight: 400;
+	color: var(--dark-grey);
+	margin-bottom: 10px;
+}
+.book-card-description {
+	font-size: 14px;
+	font-weight: 400;
+	color: var(--dark-grey);
+	margin-bottom: 10px;
+	max-height: 65px;
+	overflow: hidden;
+	flex: 1 0 65px;
+}
+.book-card-span,
+.book-card-rating {
+	font-size: 14px;
+	font-weight: 400;
+	color: var(--dark-grey);
+}
+.book-card-meter {
+	width: 100%;
+	margin-bottom: 10px;
+}
+.book-card-tag {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 5px 20px;
+	border-radius: 8px;
+	background-color: var(--bg-color);
 }
