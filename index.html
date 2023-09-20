@@ -9,11 +9,47 @@
 
 <body>
     <div class="page-wrapper">
-        <div class="container">
+        <header class="container">
             <div class="row">
-                <div class="column"></div>
+                <div class="column flex-shrink">
+                    <div class="logo">
+                        <span>Codeup</span> Books App
+                    </div>
+                </div>
             </div>
-        </div>
+        </header>
+        <section class="container cat-tags">
+            <div class="row">
+                <div class="column">
+                    <ul class="cat-tab-menu">
+                        <li class="active">
+                            <div>All</div>
+                            <span>32</span>
+                        </li>
+                        <li>
+                            <div>Fiction</div>
+                            <span>8</span>
+                        </li>
+                        <li>
+                            <div>Novels</div>
+                            <span>12</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="column flex-shrink justify-content-center">
+                    <button class="btn btn-cta">Add Book</button>
+                </div>
+            </div>
+        </section>
+        <section class="container">
+            <div class="row">
+                <div class="books-grid">
+                    <article class="book-card">
+
+                    </article>
+                </div>
+            </div>
+        </section>
     </div>
     <!-- MAIN -->
     <script type="module" src="js/index.js"></script>
