@@ -1,13 +1,9 @@
 import { getBooks, getBook, deleteBook, postBook, patchBook, searchBookByTitle } from "./api/books.js";
 
 const renderCategories = (categories) => {
-	return categories
-		.map(
-			(category) => `
-        <span class="book-card-tag">${category}</span>
-    `
-		)
-		.join("");
+	// create a single HTML string made up of all the categories
+	const categoriesHTML = categories.map((category) => `<span class="book-card-tag">${category}</span>`).join("");
+	return categoriesHTML;
 };
 const renderBook = (book, target) => {
 	const bookCard = document.createElement("article");
