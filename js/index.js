@@ -1,45 +1,42 @@
 import { getBooks, getBook, deleteBook, postBook, patchBook, searchBookByTitle } from "./api/books.js";
 
-const renderModal = (book) => {
+const renderModal = (book, action) => {
 	const modal = document.createElement("div");
 	modal.classList.add("modal");
 	modal.innerHTML = `
         <div class="modal-bg"></div>
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title">${book.title && book.title}</h2>
+                <h2 class="modal-title">${book?.title ? book.title : ""}</h2>
                 <span class="modal-close">&times;</span>
             </div>
             <div class="modal-body">
                 <form class="modal-form" id="book-form">
                     <label for="title">
                         <span>Title</span>
-                        <input required type="text" name="title" id="title" value="${book.title && book.title}" />
+                        <input required type="text" name="title" id="title" value="${book?.title ? book.title : ""}" />
                     </label>
                     <label for="year">
                         <span>Year</span>
-                        <input required type="number" name="year" id="year" value="${book.year && book.year}" />
+                        <input required type="number" name="year" id="year" value="${book?.year ? book.year : ""}" />
                     </label>
                     <label for="description">
                         <span>Description</span>
-                        <textarea required name="description" id="description">${book.description && book.description}</textarea>
+                        <textarea required name="description" id="description">${book?.description ? book.description : ""}</textarea>
                     </label>
                     <label for="rating">
                         <span>Rating</span>
-                        <input required type="number" name="rating" id="rating" value="${book.rating && book.rating}" />
+                        <input required type="number" name="rating" id="rating" value="${book?.rating ? book.rating : ""}" />
                     </label>
                     <label for="categories">
                         <span>Categories</span>
-                        <input required type="text" name="categories" id="categories" value="${book.categories && book.categories.join(", ")}" />
+                        <input required type="text" name="categories" id="categories" value="${book?.categories ? book.categories.join(", ") : ""}" />
                     </label>
                     <div class="modal-form-actions">
-                        <button type="submit" class="btn btn-cta" data-action="save">Save</button>
+                        <button type="submit" class="btn btn-cta" data-action="${action}">${action}</button>
                         <button type="button" class="btn btn-secondary" data-action="cancel">Cancel</button>
                     </div>
                 </form>
-            </div>
-            <div class="modal-footer">
-                <h3>Modal Footer</h3>
             </div>
         </div>
     `;
@@ -49,32 +46,37 @@ const renderModal = (book) => {
 	const modalForm = modal.querySelector("#book-form");
 	const modalFormCancel = modal.querySelector("[data-action='cancel']");
 	const modalFormSave = modal.querySelector("[data-action='save']");
+	const modalFormCreate = modal.querySelector("[data-action='create']");
 	// add event listener to the close btn
-	modalClose.addEventListener("click", () => {
+	modalClose?.addEventListener("click", () => {
 		modal.remove();
 	});
-	modalBg.addEventListener("click", () => {
+	modalBg?.addEventListener("click", () => {
 		modal.remove();
 	});
 	// add event listener to the cancel btn
-	modalFormCancel.addEventListener("click", (e) => {
+	modalFormCancel?.addEventListener("click", (e) => {
 		e.preventDefault();
 		modal.remove();
 	});
 	// add event listener to the save btn
-	modalFormSave.addEventListener("click", async (e) => {
+	modalFormSave?.addEventListener("click", async (e) => {
+		e.preventDefault();
+		// TODO: if the form is valid, grab the form data and create a new book object
+		// REMEMBER, you still have access to the book object here because it was passed as a parameter
+		// REMEMBER, the categories are a string of comma separated values, so you'll need to split them into an array
+		alert(`Save button clicked for ${book.title}`);
+		modal.remove();
+	});
+	// add event listener to the create btn
+	modalFormCreate?.addEventListener("click", async (e) => {
 		e.preventDefault();
 		// validate the form data with the native javascript form validation
-		if (!modalForm.checkValidity()) {
-			// if the form is invalid, submit it. The form won't actually submit, but this allows the native validation to display the error messages
-			modalForm.submit();
-		} else {
-			// TODO: if the form is valid, grab the form data and create a new book object
-			// REMEMBER, you still have access to the book object here because it was passed as a parameter
-			// REMEMBER, the categories are a string of comma separated values, so you'll need to split them into an array
-			alert(`Save button clicked for ${book.title}`);
-			modal.remove();
-		}
+		// TODO: if the form is valid, grab the form data and create a new book object
+		// REMEMBER, you still have access to the book object here because it was passed as a parameter
+		// REMEMBER, the categories are a string of comma separated values, so you'll need to split them into an array
+		alert(`Save button clicked for ${book.title}`);
+		modal.remove();
 	});
 	// THEN append it into the DOM
 	document.body.appendChild(modal);
@@ -139,7 +141,7 @@ const renderBook = (book, target) => {
 		// TODO: add edit functionality
 		// REMEMBER, you still have access to the book object here
 		handleMenuClose();
-		renderModal(book);
+		renderModal(book, "save");
 	});
 	// add event listener to the delete btn
 	deleteBtn.addEventListener("click", async () => {
@@ -156,6 +158,10 @@ const renderBook = (book, target) => {
 (async () => {
 	///// GET DOM ELEMENTS
 	const addBookBtn = document.querySelector("#add-book");
+	//// EVENT LISTENERS
+	addBookBtn.addEventListener("click", () => {
+		renderModal({}, "create");
+	});
 	/////
 	const books = await getBooks();
 	console.log(books);
