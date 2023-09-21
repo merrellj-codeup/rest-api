@@ -23,7 +23,7 @@ const renderBook = (book, target) => {
     `;
 	// IF we had buttons in here that needed event listeners, we would do it here
 	const editBtn = bookCard.querySelector("button");
-	editBtn.addEventListener("click", async () => {
+	editBtn?.addEventListener("click", async () => {
 		/// DO THE THANG!
 	});
 	// THEN append it into the DOM
