@@ -89,11 +89,13 @@ ul.cat-tab-menu li span {
 	padding: 25px;
 	display: flex;
 	flex-direction: column;
+	position: relative;
 }
 
 .book-card-title {
 	font-size: 18px;
 	font-weight: 500;
+	margin-right: 30px;
 }
 .book-card-year {
 	font-size: 14px;
@@ -127,4 +129,61 @@ ul.cat-tab-menu li span {
 	padding: 5px 20px;
 	border-radius: 8px;
 	background-color: var(--bg-color);
+	font-size: 12px;
+}
+
+.book-card-actions {
+	position: absolute;
+	top: 25px;
+	right: 10px;
+	display: flex;
+	flex-direction: column;
+}
+
+.book-card-actions-toggle {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 30px;
+	height: 30px;
+	border-radius: 8px;
+	transition: all ease 0.3s;
+	cursor: pointer;
+	&:hover {
+		background-color: var(--grey);
+	}
+}
+
+.book-card-actions-menu {
+	position: absolute;
+	top: 100%;
+	right: 0;
+	width: 225px;
+	border-radius: 14px;
+	background-color: #fff;
+	filter: drop-shadow(0px 20px 50px rgba(44, 63, 88, 0.15));
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	transition: all ease 0.3s;
+	transform: translateY(30%);
+	opacity: 0;
+	pointer-events: none;
+}
+
+.book-card-actions.active .book-card-actions-menu {
+	transform: translateY(0);
+	opacity: 1;
+	pointer-events: all;
+}
+
+.book-card-action {
+	display: flex;
+	align-items: center;
+	padding: 10px 20px;
+	cursor: pointer;
+	transition: all ease 0.3s;
+	&:hover {
+		background-color: var(--grey);
+	}
 }
